@@ -137,6 +137,10 @@
 // Use AJAX | Promises to load all 3 JSON files
 // Iterate over all JSON files and match the human with their appropriate pet(s)
 // ES6-ify it all!
+  //LET - something that will change (domstring)
+  //Const - something that doesn't change (output)
+  //FAT ARROW
+
 $(document).ready(function(){
 
   const outputContainer = $("#output");
@@ -163,48 +167,68 @@ $(document).ready(function(){
     outputContainer.append(domString);
   };
 
-  const loadHumans = function(){
-    return new Promise(function(resolve, reject) {
+  const loadHumans = () => {
+    return new Promise((resolve, reject) => {
       $.ajax("./database/humans.json")
-      .done(function(data1){
-        resolve(data1.humans);
-        }).fail(function(error1){
-          reject(error1);
-        });
+      .done((data1) => resolve(data1.humans))
+      .fail((error1) => reject(error1));
       });
   };
 
-   const loadCats = function(){
-    return new Promise(function(resolve, reject) {
+  //  const loadCats = function(){
+  //   return new Promise(function(resolve, reject) {
+  //     $.ajax("./database/cats.json")
+  //     .done(function(data2){
+  //       resolve(data2.cats);
+  //       }).fail(function(error2){
+  //         reject(error2);
+  //       });
+  //     });
+  // };
+   const loadCats = () => {
+    return new Promise((resolve, reject) =>{
       $.ajax("./database/cats.json")
-      .done(function(data2){
-        resolve(data2.cats);
-        }).fail(function(error2){
-          reject(error2);
-        });
-      });
+      .done((data2) => resolve(data2.cats))
+      .fail((error2) => reject(error2));
+    });
   };
 
-   const loadDinos = function(){
-    return new Promise(function(resolve, reject) {
+  //  const loadDinos = function(){
+  //   return new Promise(function(resolve, reject) {
+  //     $.ajax("./database/dinos.json")
+  //     .done(function(data3){
+  //       resolve(data3.dinos);
+  //       }).fail(function(error3){
+  //         reject(error3);
+  //       });
+  //     });
+  // };
+
+   const loadDinos = () => {
+    return new Promise((resolve, reject) => {
       $.ajax("./database/dinos.json")
-      .done(function(data3){
-        resolve(data3.dinos);
-        }).fail(function(error3){
-          reject(error3);
-        });
+      .done((data3) => resolve(data3.dinos))
+      .fail((error3) => reject(error3));
       });
-  };
+   };
 
-    const loadDogs = function(){
-    return new Promise(function(resolve, reject) {
+  //   const loadDogs = function(){
+  //   return new Promise((resolve, reject) => {
+  //     $.ajax("./database/dogs.json")
+  //     .done(function(data4){
+  //       resolve(data4.dogs);
+  //       }).fail(function(error4){
+  //         reject(error4);
+  //       });
+  //     });
+  // };
+
+  const loadDogs = () => {
+    return new Promise((resolve, reject) =>{
       $.ajax("./database/dogs.json")
-      .done(function(data4){
-        resolve(data4.dogs);
-        }).fail(function(error4){
-          reject(error4);
-        });
-      });
+      .done((data4) => resolve(data4.dogs))
+      .fail((error4) => reject(error4));
+    });
   };
 
   const myHumans = []; //create empty array to store info in
